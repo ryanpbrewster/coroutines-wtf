@@ -10,7 +10,7 @@ class FutureDb {
     private val DELAY = 200L
     private val timer = Timer()
     private val kvs = HashMap<String, String>()
-    fun set(k: String, v: String): Future<Unit> {
+    fun set(k: String, v: String): CompletableFuture<Unit> {
         val fut = CompletableFuture<Unit>()
         timer.schedule(object : TimerTask() {
             override fun run() {
@@ -21,7 +21,7 @@ class FutureDb {
         }, DELAY)
         return fut
     }
-    fun get(k: String): Future<String?> {
+    fun get(k: String): CompletableFuture<String?> {
         val fut = CompletableFuture<String?>()
         timer.schedule(object : TimerTask() {
             override fun run() {
