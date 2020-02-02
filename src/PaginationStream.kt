@@ -1,8 +1,12 @@
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.future.await
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.CompletableFuture
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 fun main() {
     class Remote(n: Int) {
         private val strings = (1 .. n).map { it.toString() }.toList().sorted()
