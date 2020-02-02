@@ -16,7 +16,9 @@ fun main() = runBlocking{
                 when (msg) {
                     is SetNeighbor -> neighbor = msg.neighbor
                     is Counter -> {
-                        println("$i --- ${msg.value}")
+                        if (msg.value % 997 == 0) {
+                            println("$i --- ${msg.value}")
+                        }
                         if (msg.value > 0) {
                             neighbor?.send(Counter(msg.value - 1))
                         } else {
